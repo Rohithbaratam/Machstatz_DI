@@ -1,7 +1,7 @@
-The asynchat module builds on asyncore to make it easier to implement protocols based on passing messages back and forth between server and client. 
-The async_chat class is an asyncore.dispatcher subclass that receives data and looks for a message terminator. 
-Your subclass only needs to specify what to do when data comes in and how to respond once the terminator is found. 
-Outgoing data is queued for transmission via FIFO objects managed by async_chat.
+//The asynchat module builds on asyncore to make it easier to implement protocols based on passing messages back and forth between server and client. 
+//The async_chat class is an asyncore.dispatcher subclass that receives data and looks for a message terminator. 
+//Your subclass only needs to specify what to do when data comes in and how to respond once the terminator is found. 
+//Outgoing data is queued for transmission via FIFO objects managed by async_chat.
 
 import asyncore
 import logging
