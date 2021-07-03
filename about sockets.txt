@@ -1,0 +1,24 @@
+The most common type of socket applications are client-server applications, where one side acts as the server and waits for connections from clients. 
+This is the type of application that I’ll be covering in this tutorial. More specifically, we’ll look at the socket API for Internet sockets, sometimes called Berkeley or BSD sockets. There are also Unix domain sockets, which can only be used to communicate between processes on the same host.
+
+Python’s socket module provides an interface to the Berkeley sockets API. This is the module that we’ll use and discuss in this tutorial.
+
+The primary socket API functions and methods in this module are:
+
+socket()
+bind()
+listen()
+accept()
+connect()
+connect_ex()
+send()
+recv()
+close()
+Python provides a convenient and consistent API that maps directly to these system calls, their C counterparts. 
+We’ll look at how these are used together in the next section.
+As part of its standard library, Python also has classes that make using these low-level socket functions easier. 
+Although it’s not covered in this tutorial, see the socketserver module, a framework for network servers. There are also many modules available that implement higher-level Internet protocols like HTTP and SMTP. For an overview, see Internet Protocols and Support.
+A listening socket does just what it sounds like. It listens for connections from clients. When a client connects, the server calls accept() to accept, or complete, the connection.
+The client calls connect() to establish a connection to the server and initiate the three-way handshake. The handshake step is important since it ensures that each side of the connection is reachable in the network, in other words that the client can reach the server and vice-versa. It may be that only one host, client or server, can reach the other.
+In the middle is the round-trip section, where data is exchanged between the client and server using calls to send() and recv().
+At the bottom, the client and server close() their respective sockets.
