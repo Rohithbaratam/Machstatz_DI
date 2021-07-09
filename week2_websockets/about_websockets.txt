@@ -1,0 +1,59 @@
+
+ 
+Actually using “sockets” module make processes synchronous (like it breaks all the going works during it’s working ) but we need to be done asynchronously so we use “websockets” module.
+ 
+Websockets is a library for building websocket servers and clients in python which is built on top of “asyncio” a python’s standard asynchronous I/O framework.
+
+Basic Example
+WebSocket server example.
+It reads a name from the client, sends a greeting, and closes the connection.
+
+//
+import asyncio
+import websockets
+
+
+async def hello(websocket, path):
+
+   name = await websocket.recv()
+    print(f"< {name}")
+
+    greeting = f"Hello {name}!"
+
+    await websocket.send(greeting)
+    print(f"> {greeting}")
+
+
+start_server = websockets.serve(hello, "localhost", 8765)
+
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+//
+
+On the server side, websockets executes the handler coroutine hello once for each WebSocket connection. It closes the connection when the handler coroutine returns.
+
+//
+import asyncio
+import websockets
+
+async def hello():
+   uri = "ws://localhost:8765"
+   async with websockets.connect(uri) as websocket:
+       name = input("What's your name? ")
+
+        await websocket.send(name)
+        print(f"> {name}")
+
+        greeting = await websocket.recv()
+        print(f"< {greeting}")
+
+asyncio.get_event_loop().run_until_complete(hello())
+ //
+ 
+Using connect() as an asynchronous context manager ensures the connection is closed before exiting the hello coroutine.
+ 
+WebSocket is a computer communications transport protocol (like TCP, HTTP 1.0, HTTP etc.)
+Socket is an endpoint for sending and receiving data across the network (like Port number).
+
+
