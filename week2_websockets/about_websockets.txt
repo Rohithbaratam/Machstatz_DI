@@ -53,7 +53,16 @@ asyncio.get_event_loop().run_until_complete(hello())
  
 Using connect() as an asynchronous context manager ensures the connection is closed before exiting the hello coroutine.
  
-WebSocket is a computer communications transport protocol (like TCP, HTTP 1.0, HTTP etc.)
-Socket is an endpoint for sending and receiving data across the network (like Port number).
+WebSocket is a computer communications transport protocol (like TCP, HTTP 1.0, HTTP etc.) and whereas, Socket is an endpoint for sending and receiving data across the network (like Port number).
+
+The development of websockets is shaped by four principles:
+1. Simplicity
+2. Robustness
+3. Quality
+4. Performance
+
+websockets was created to provide the best coroutine-based API to manage WebSocket connections in Python, but if we prefer callbacks over coroutines then websockets can't be used. And they are included from python 3.6 version, we need to use a python version 3.6 or greater to implement them.
+
+
 
 
